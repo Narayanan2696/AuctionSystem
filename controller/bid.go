@@ -9,11 +9,11 @@ import (
 	"github.com/gorilla/mux"
 )
 
-func ListOnlineBidders() http.HandlerFunc {
+func WinningBid() http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		if r.Method == http.MethodGet {
 			request := mux.Vars(r)
-			list, err := model.ListBidders(request["auction_id"])
+			list, err := model.GetWinningBid(request["auction_id"])
 			fmt.Println(list)
 			render.JSON(w, err, list)
 		}

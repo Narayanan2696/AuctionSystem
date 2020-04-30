@@ -19,7 +19,8 @@ func GetAuctioneer() (views.Auctioneer, error) {
 	}
 	defer rows.Close()
 	rand.Seed(time.Now().UnixNano())
-	id := rand.Intn(count-1) + 1
+	// fmt.Println("count:", count)
+	id := rand.Intn(count-0) + 1
 	fmt.Println("id:", id)
 	auctioner, err := connect.Query("SELECT * FROM AUCTIONEER where id = ?", id)
 	if err != nil {
